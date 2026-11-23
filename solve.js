@@ -39,7 +39,7 @@ export function run(p, inp) {
       case 0x00: case 0x34: break;
       default: return done(5);
     }
-    if (pc + imm >= n) return done(9);
+    if (imm && pc + imm >= n) return done(9); // imm 0: pc < n already checked, so the cut-off check can never fire
     steps++;
     const nx = pc + 1 + imm;
     if (sp < pops) return done(2);
